@@ -1,6 +1,6 @@
 # 歌ネットから歌詞を取得して音楽ファイルに埋め込むアプリ
 
-**歌ネット歌詞ダウンローダー Uta-Net Lyrics Downloader**
+**歌ネット歌詞ダウンローダー (Uta-Net Lyrics Downloader)**
 
 ## 概要
 
