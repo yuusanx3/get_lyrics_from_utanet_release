@@ -117,6 +117,65 @@ Pythonの音楽ファイルのタグを編集できるライブラリ「mutagen�
    }
    ```
 
+## ライブラリを軽く紹介
+
+### mutagen
+
+- 概要  
+  マルチメディアファイルのメタタグを編集できるライブラリ  
+
+  > Mutagen is a Python module to handle audio metadata. It supports ASF, FLAC, MP4, Monkey’s Audio, MP3, Musepack, Ogg Opus, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, WavPack, OptimFROG, and AIFF audio files.
+
+- インストール  
+
+  ```cmd
+  pip install mutagen
+  ```
+
+- 使い方  
+  例としてmp3の場合  
+
+  ```python
+  # インポート
+  from mutagen.mp3 import MP3
+  # ファイルパスからタグ読み込み
+  tags = MP3({ファイル名})
+  # 曲名のタグ（これはmp3の場合です。ファイル形式によってタグが異なります）
+  print(tags["TIT2"][0])
+  # アーティスト
+  print(tags["©ART"][0])
+  # 歌詞
+  print(tags[u"USLT::'eng'"])
+  ```
+
+### beautifulsoup4
+
+- 概要  
+  Webスクレイピングができるライブラリです。任意のWebサイトのHTMLファイルを解析して、情報を取ってこれます。
+
+- インストール  
+
+  ```cmd
+  pip install beautifulsoup4
+  ```
+
+- 使い方  
+
+  ```python
+  # インポート
+  from bs4 import BeautifulSoup
+  # requestsを使って、HTMLの情報を取得
+  html = requests.get({任意のURL}).content
+  # BeautifulSoupを使うためにインスタンスの作成
+  soup = BeautifulSoup(html, "html.parser")
+  # tbodyタグでclass="songlist"のものを全て検索してリストで取得する
+  songlists = soup.find_all("tbody",class_="songlist") # 曲名一覧table
+  # 上のリストの繰り返し
+  for soup_songlist in soup_songlists:
+      # spanタグでclass="title"のものを1つ取得する（複数ある場合は、一番最初にあるものになる）
+      title = songlist.find("span",class_="title").text
+  ```
+
 ## 最後に
 
 Webスクレイピングをすることで、色んな情報をネット上から自動でとって取れるようになるので、結構いろんなことに使えそうです。また、何か思いついたらこんな感じの簡単なアプリを作ろうと思います。
